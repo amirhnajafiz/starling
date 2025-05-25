@@ -4,7 +4,7 @@ import "github.com/amirhnajafiz/starling/internal/ports/http"
 
 func Start() {
 	// initialize the HTTP server
-	server := http.NewHandler()
+	server := http.NewServer()
 
 	// start the HTTP server
 	if err := server.ListenAndServe(); err != nil {

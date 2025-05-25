@@ -9,8 +9,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// NewHandler initializes a new HTTP handler with the specified routes.
-func NewHandler() *http.Server {
+// NewServer initializes a new HTTP server with the specified routes.
+func NewServer() *http.Server {
 	// initialize a new mux router
 	app := mux.NewRouter()
 
