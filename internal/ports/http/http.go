@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/amirhnajafiz/starling/internal/ports/http/routes"
+	"github.com/amirhnajafiz/starling/internal/ports/http/handler"
 
 	"github.com/gorilla/mux"
 )
@@ -15,7 +15,7 @@ func NewHandler() *http.Server {
 	app := mux.NewRouter()
 
 	// define the routes
-	routes.NewRouter(app)
+	handler.Register(app)
 
 	return &http.Server{
 		Handler:      app,
