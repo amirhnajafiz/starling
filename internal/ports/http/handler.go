@@ -9,13 +9,15 @@ import (
 // NewHandler initializes a new HTTP handler with the specified routes.
 func NewHandler() *mux.Router {
 	// initialize a new mux router
-	r := mux.NewRouter()
+	app := mux.NewRouter()
 
 	// define the routes
 	router := routes.NewRouter()
 
 	// register the routes with the router
-	r.HandleFunc("/healthz", router.Health).Methods("GET")
+	app.HandleFunc("/healthz", router.Health).Methods("GET")
+	app.HandleFunc("/states", router.GetState).Methods("GET")
+	app.HandleFunc("/states", router.AddState).Methods("POST")
 
-	return r
+	return app
 }
