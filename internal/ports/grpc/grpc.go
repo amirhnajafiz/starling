@@ -1,6 +1,8 @@
 package grpc
 
 import (
+	"net"
+
 	"github.com/amirhnajafiz/starling/internal/ports/grpc/service"
 	"github.com/amirhnajafiz/starling/pkg/raftpb"
 
@@ -16,4 +18,19 @@ func NewServer() *grpc.Server {
 	raftpb.RegisterRaftServer(server, &service.RaftServerImpl{})
 
 	return server
+}
+
+// StartServer starts the gRPC server on the specified address.
+func StartServer(server *grpc.Server, address string) error {
+	listener, err := net.Listen("tcp", address)
+	if err != nil {
+		return err
+	}
+
+	// start the gRPC server
+	if err := server.Serve(listener); err != nil {
+		return err
+	}
+
+	return nil
 }
