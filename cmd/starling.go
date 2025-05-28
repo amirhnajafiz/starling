@@ -9,5 +9,6 @@ func Exec() {
 	go startHTTPServer()
 
 	// keep the main goroutine running
-	core.StartCoreLoop()
+	c := core.Core{}
+	c.StartLoop()
 }
