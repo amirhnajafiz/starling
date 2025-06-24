@@ -9,6 +9,8 @@ import (
 // RaftServerImpl implements the RaftServer interface defined in raftpb.
 type RaftServerImpl struct {
 	raftpb.UnimplementedRaftServer
+
+	events chan []byte
 }
 
 // AppendEntries handles incoming AppendEntries requests from other Raft nodes.
